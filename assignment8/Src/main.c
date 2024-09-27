@@ -29,18 +29,20 @@
 
 int main(void)
 {
-	int ret, count;
-	char str[32];
+	int ret;
+
 	SystemInit();
 	ret = Lcd_Init();
 	if(ret) {
-		Lcd_Puts(LCD_LINE1, "!DESD @ SUNBEAM!");
-		for(count = 1; count < 100; count++) {
-			sprintf(str, "God Bless You %d", count);
-			Lcd_Puts(LCD_LINE2, str);
+		Lcd_Puts(LCD_LINE1, "Harshali patil");
+		for(int i=1;i<=16;i++)
+		{
+			lcdshift();
+		}
+
 			DelayMs(500);
 		}
-	}
+
 	return 0;
 }
 

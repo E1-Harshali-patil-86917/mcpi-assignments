@@ -60,7 +60,7 @@ int Lcd_Init() {
 	DelayMs(3);
 
 	// lcd initialization
-	Lcd_WriteByte(LCD_CMD, LCD_FN_SET_4BIT_2LINES);
+	Lcd_Write4BitAndCtrl(LCD_FN_SET_4BIT_2LINES);
 	DelayMs(1);
 	Lcd_WriteByte(LCD_CMD, LCD_DISP_CTRL);
 	DelayMs(1);
@@ -69,6 +69,8 @@ int Lcd_Init() {
 	Lcd_WriteByte(LCD_CMD, LCD_ENTRY_MODE);
 	DelayMs(1);
 	Lcd_WriteByte(LCD_CMD, LCD_DISP_ON);
+	DelayMs(1);
+	Lcd_WriteByte(LCD_CMD, LCD_SHIFT_LEFT);
 	DelayMs(1);
 	return ret;
 }
@@ -79,4 +81,10 @@ void Lcd_Puts(uint8_t line, char str[]) {
 	DelayMs(1);
 	for(i=0; str[i]!='\0'; i++)
 		Lcd_WriteByte(LCD_DATA, str[i]);
+}
+void lcdshift(void)
+{
+	Lcd_WriteByte(LCD_CMD, LCD_SHIFT_LEFT);
+	DelayMs(1000);
+
 }
